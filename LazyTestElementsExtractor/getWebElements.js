@@ -1168,10 +1168,15 @@ var importTemplate = "import lazy.test.ui.annotations.*;\r\n" +
                         "import lazy.test.ui.controls.*;\r\n" +
                         "import lazy.test.ui.browser.BrowserEmulator;\r\n\r\n";
 
-var beanTemplate = "    @Xpath(xpath={${xpath}})\r\n" +
-                      "    @Frame(frame=\"${frame}\")\r\n" +
-                      "    @Description(description=\"${controlDesc}\")\r\n" +
-                      "    public ${type} ${controlName};\r\n\r\n";
+// var beanTemplate = "    @Xpath(xpath={${xpath}})\r\n" +
+//                       "    @Frame(frame=\"${frame}\")\r\n" +
+//                       "    @Description(description=\"${controlDesc}\")\r\n" +
+//                       "    public ${type} ${controlName};\r\n\r\n";
+
+var beanTemplate = "'${controlName}'{'locate': (By.XPATH,${xpath})},"
+
+
+
 
 var classTemplate = "public class ${className} extends PageBean {\r\n\r\n" +
                         "${beans}" +

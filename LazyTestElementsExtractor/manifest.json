@@ -2,7 +2,7 @@
     "name": "LazyTest Elements Extractor",
     "version": "1.0.0",
     "manifest_version": 2,
-    "description": "Extract web elements from page and show them. Chose to generate Java code.",
+    "description": "Alan's try",
 
     "permissions": ["downloads", "contextMenus", "tabs", "<all_urls>","http://*/*", "https://*/*"],
 
