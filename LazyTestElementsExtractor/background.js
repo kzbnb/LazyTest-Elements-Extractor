@@ -20,11 +20,22 @@ chrome.runtime.onMessage.addListener(function(message) {
     if (message == "ONLOAD") {
         chrome.contextMenus.removeAll();
 
+        // parentMenu = chrome.contextMenus.create({
+        //     "title": "LazyTest Elements Extractor",
+        //     "type": "normal", //菜单项类型 "checkbox", "radio","separator"
+        //     "contexts": ["all"], //菜单项影响的页面元素 "anchor","image"
+        //     "onclick": function () {
+        //     } //单击时的处理函数
+        // });
+
         parentMenu = chrome.contextMenus.create({
-            "title": "LazyTest Elements Extractor",
+            "title": "Extract Selected",
             "type": "normal", //菜单项类型 "checkbox", "radio","separator"
             "contexts": ["all"], //菜单项影响的页面元素 "anchor","image"
             "onclick": function () {
+                chrome.tabs.query({active: true}, function (tab) {
+                    chrome.tabs.sendMessage(tab[0].id, controlInfoArray);
+                });
             } //单击时的处理函数
         });
 
@@ -51,17 +62,17 @@ chrome.runtime.onMessage.addListener(function(message) {
             chrome.contextMenus.remove(extractSelectedMenu, function(){});
         }
 
-        extractSelectedMenu = chrome.contextMenus.create({
-            "parentId": parentMenu,
-            "title": "Extract Selected",
-            "type": "normal", //菜单项类型 "checkbox", "radio","separator"
-            "contexts": ["all"], //菜单项影响的页面元素 "anchor","image"
-            "onclick": function () {
-                chrome.tabs.query({active: true}, function (tab) {
-                    chrome.tabs.sendMessage(tab[0].id, controlInfoArray);
-                });
-            } //单击时的处理函数
-        });
+        // extractSelectedMenu = chrome.contextMenus.create({
+        //     "parentId": parentMenu,
+        //     "title": "Extract Selected",
+        //     "type": "normal", //菜单项类型 "checkbox", "radio","separator"
+        //     "contexts": ["all"], //菜单项影响的页面元素 "anchor","image"
+        //     "onclick": function () {
+        //         chrome.tabs.query({active: true}, function (tab) {
+        //             chrome.tabs.sendMessage(tab[0].id, controlInfoArray);
+        //         });
+        //     } //单击时的处理函数
+        // });
     } else {
         document.getElementById("foo").value = message;
 
