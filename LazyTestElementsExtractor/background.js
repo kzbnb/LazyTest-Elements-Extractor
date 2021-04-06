@@ -28,17 +28,18 @@ chrome.runtime.onMessage.addListener(function(message) {
             } //单击时的处理函数
         });
 
-        chrome.contextMenus.create({
-            "parentId": parentMenu,
-            "title": "Extract All",
-            "type": "normal", //菜单项类型 "checkbox", "radio","separator"
-            "contexts": ["all"], //菜单项影响的页面元素 "anchor","image"
-            "onclick": function () {
-                chrome.tabs.query({active: true}, function (tab) {
-                    chrome.tabs.sendMessage(tab[0].id, "TriggerAll");
-                });
-            } //单击时的处理函数
-        });
+
+        // chrome.contextMenus.create({
+        //     "parentId": parentMenu,
+        //     "title": "Extract All",
+        //     "type": "normal", //菜单项类型 "checkbox", "radio","separator"
+        //     "contexts": ["all"], //菜单项影响的页面元素 "anchor","image"
+        //     "onclick": function () {
+        //         chrome.tabs.query({active: true}, function (tab) {
+        //             chrome.tabs.sendMessage(tab[0].id, "TriggerAll");
+        //         });
+        //     } //单击时的处理函数
+        // });
     } else if (message == "rmSingleMenu") {
         if (extractSelectedMenu != -1) {
             chrome.contextMenus.remove(extractSelectedMenu, function(){});

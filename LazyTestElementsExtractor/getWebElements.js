@@ -650,7 +650,7 @@ function genSingleXpathList(singleXpathArray) {
             xpathListString += "<br/>";
         }
 
-        var checkBox = "<input type='checkbox' checked='checked' name='singleCheckbox' style='font-size: 100%;margin: 0;vertical-align: middle;*overflow: visible;line-height: normal;cursor: pointer;' value=\"" + singleXpathArray[xpath] + "\">";
+        var checkBox = "<input type='checkbox' name='singleCheckbox' style='font-size: 100%;margin: 0;vertical-align: middle;*overflow: visible;line-height: normal;cursor: pointer;' value=\"" + singleXpathArray[xpath] + "\">";
         var label = "<label style='float:none;font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;font-weight: normal;white-space:nowrap;nowrap:nowrap;' title=\"" + singleXpathArray[xpath] + "\">" + (singleXpathArray[xpath].length > 45 ? singleXpathArray[xpath].substr(0, 42) + "..." : singleXpathArray[xpath]) + "</label>";
 
         xpathListString += checkBox + label;
@@ -1173,7 +1173,7 @@ var importTemplate = "import lazy.test.ui.annotations.*;\r\n" +
 //                       "    @Description(description=\"${controlDesc}\")\r\n" +
 //                       "    public ${type} ${controlName};\r\n\r\n";
 
-var beanTemplate = "'${controlName}'{'locate': (By.XPATH,${xpath})},"
+var beanTemplate = "'${controlName}':{'locate': (By.XPATH,${xpath})},"
 
 
 
